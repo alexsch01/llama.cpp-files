@@ -864,7 +864,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/```.*?\n([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+        .replace(/```.*?\n([\s\S]*?)```/g, '<pre><code><br />$1<br /></code></pre>')
         .replace(/`(.*?)`/g, '<code>$1</code>')
         .replace(/\n/gim, '<br />');
       return html`<span dangerouslySetInnerHTML=${{ __html: md }} />`;
@@ -1021,6 +1021,7 @@
 </head>
 
 <body>
+  <button onclick="if (document.querySelector('body').style['max-width'] === '') { document.querySelector('body').style['max-width'] = screen.width } else { document.querySelector('body').style['max-width'] = '' }">change width</button>
   <div id="container">
     <input type="file" id="fileInput" accept="image/*" style="display: none;">
   </div>
