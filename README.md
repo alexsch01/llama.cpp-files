@@ -1,6 +1,6 @@
 # Build Instructions
 ```
-git clone https://github.com/alexsch01/llama.cpp-upstream -b custom test
+git clone https://github.com/alexsch01/llama.cpp-files test
 cd test
 make
 ```
