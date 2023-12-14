@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="color-scheme" content="light dark">
-  <title>llama.cpp - chat</title>
+  <title>llama.cpp</title>
 
   <style>
+    footer,
+    #content > form,
+    .right > button:nth-child(2) {
+      display: none;
+    }
+
     body {
       font-family: system-ui;
       font-size: 90%;
@@ -858,13 +864,8 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/^#{1,6} (.*)$/gim, '<h3>$1</h3>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/__(.*?)__/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/_(.*?)_/g, '<em>$1</em>')
-        .replace(/```.*?\n([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-        .replace(/`(.*?)`/g, '<code>$1</code>')
+        .replace(/```.*?\n([\s\S]*?)```/g, '<pre><code style="color: white"><br />$1<br /></code></pre>')
+        .replace(/`(.*?)`/g, '<strong><code>$1</code></strong>')
         .replace(/\n/gim, '<br />');
       return html`<span dangerouslySetInnerHTML=${{ __html: md }} />`;
     };
@@ -1020,6 +1021,7 @@
 </head>
 
 <body>
+  <button onclick="if (document.querySelector('body').style['max-width'] === '') { document.querySelector('body').style['max-width'] = screen.width } else { document.querySelector('body').style['max-width'] = '' }">change width</button>
   <div id="container">
     <input type="file" id="fileInput" accept="image/*" style="display: none;">
   </div>
